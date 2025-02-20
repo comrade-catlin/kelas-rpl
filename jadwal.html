@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jadwal Pelajaran</title>
+    <link rel="stylesheet" href="jam.css">
+    <link rel="stylesheet" href="jadwal.css">
+    <link rel="icon" href="https://img.itch.zone/aW1nLzE2ODQ5NTgucG5n/original/OFp2Pk.png">
+</head>
+<body>
+    <canvas id="matrix"></canvas>
+    <div class="schedule-container">
+        <table class="schedule-table">
+            <tbody id="schedule-body">
+                <tr>
+                    <td class="monday">
+                        <div class="day">Senin</div>
+                        <div class="subjects">
+                            - JAS<br>
+                            - BIS<br>
+                            - PWK<br>
+                            - INF (bu yune)<br>
+                        </div>
+                        <div class="date" id="monday-date"></div>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="tuesday">
+                        <div class="day">Selasa</div>
+                        <div class="subjects">
+                            - PAB<br>
+                            - SEJ<br>
+                            - PWK<br>
+                            - BJP
+                        </div>
+                        <div class="date" id="tuesday-date"></div>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="wednesday">
+                        <div class="day">Rabu</div>
+                        <div class="subjects">
+                            - MTK<br>
+                            - BIN<br>
+                            - SBD<br>
+                        </div>
+                        <div class="date" id="wednesday-date"></div>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="thursday">
+                        <div class="day">Kamis</div>
+                        <div class="subjects">
+                            - DPK (pa reza)<br>
+                            - IPAS<br>
+                            - DPK (pa reza)<br>
+                        </div>
+                        <div class="date" id="thursday-date"></div>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="friday">
+                        <div class="day">Jumat</div>
+                        <div class="subjects">
+                            - DPK (pa gilang)<br>
+                            - PCA (bu ajeng)
+                        </div>
+                        <div class="date" id="friday-date"></div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div id="clock-container">
+        <div id="clock"></div>
+    </div>
+    <script src="script.js"></script>
+    <script src="jadwal.js"></script>
+    <script src="matrix.js"></script>
+</body>
+</html>

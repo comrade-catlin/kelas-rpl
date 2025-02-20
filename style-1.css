@@ -1,0 +1,82 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Arial', sans-serif;
+    color: #fff;
+    text-align: center;
+    overflow: hidden;
+    position: relative;
+    z-index: 1;
+  }
+  
+  canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 0;
+  }
+  
+  h1, .box-container {
+    position: relative;
+    z-index: 1;
+  }
+  
+  h1 {
+    font-size: 3em;
+    margin-bottom: 20px;
+    text-shadow: 0 0 10px #03fa6e, 0 0 20px #03fa6e, 0 0 30px #03fa6e;
+    opacity: 0;
+    animation: fadeIn 2s ease-in-out forwards;
+  }
+  
+  .box-container {
+    background-color: rgba(23, 24, 16, 0.8);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 15px #03fa6e;
+    width: 300px;
+    text-align: left;
+    opacity: 0;
+    animation: fadeIn 3s ease-in-out forwards 1s;
+  }
+  
+  .box-container p {
+    font-size: 1.2em;
+    margin-bottom: 10px;
+  }
+  
+  .box-container ol {
+    list-style-type: decimal;
+    padding-left: 20px;
+  }
+  
+  .box-container a {
+    color: #03fa6e;
+    text-decoration: none;
+    transition: color 0.3s;
+  }
+  
+  .box-container a:hover {
+    color: #00ffab;
+  }
+  
+  /* Animations */
+  @keyframes fadeIn {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+  
+  

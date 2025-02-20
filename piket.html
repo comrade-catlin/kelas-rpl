@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jadwal Piket</title>
+    <link rel="stylesheet" href="jam.css">
+    <link rel="stylesheet" href="jadwal.css">
+    <link rel="icon" href="https://img.itch.zone/aW1nLzE2ODQ5NTgucG5n/original/OFp2Pk.png">
+</head>
+<body>
+
+    <canvas id="matrix"></canvas>
+    <div class="schedule-container">  
+      <h3> today's on duty: di tandai background hijau </h3>
+        <table class="schedule-table">
+            <tbody id="schedule-body">
+                <tr>
+                    <td class="monday">
+                        <div class="day">Senin</div>
+                        <div class="subjects">
+                            - fauzan<br>
+                            - rafli san<br>
+                            - teguh<br>
+                        </div>
+                        <div class="date" id="monday-date"></div>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="tuesday">
+                        <div class="day">Selasa</div>
+                        <div class="subjects">
+                            - fikri<br>
+                            - rafli sep<br>
+                            - revan<br>
+                        </div>
+                        <div class="date" id="tuesday-date"></div>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="wednesday">
+                        <div class="day">Rabu</div>
+                        <div class="subjects">
+                            - cahya<br>
+                            - raihan<br>
+                        </div>
+                        <div class="date" id="wednesday-date"></div>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="thursday">
+                        <div class="day">Kamis</div>
+                        <div class="subjects">
+                            - alif<br>
+                            - haechal<br>
+                            - raysandra<br>
+                        </div>
+                        <div class="date" id="thursday-date"></div>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="friday">
+                        <div class="day">Jumat</div>
+                        <div class="subjects">
+                            - da'i<br>
+                            - hadi<br>
+                            - satria
+                        </div>
+                        <div class="date" id="friday-date"></div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div id="clock-container">
+        <div id="clock"></div>
+    </div>
+    <script src="script.js"></script>
+    <script src="jadwal.js"></script>
+    <script src="matrix.js"></script>
+</body>
+</html>
