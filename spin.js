@@ -64,18 +64,23 @@ function spinWheel() {
 }
 function determineWinner() {
     setTimeout(() => {
+        if (userList.length === 0) {
+            alert("No more users left!");
+            return;
+        }
+
         const winningIndex = Math.floor(Math.random() * userList.length);
         const winner = userList[winningIndex];
 
-        // Show result in the modal after delay
+        // Show the winner in the modal with delay
         showWinnerModal(winner);
 
-        // Delay elimination by 2 seconds
+        // Delay the elimination after 2 seconds
         setTimeout(() => {
             eliminateUser(winningIndex);
         }, 2000);
 
-    }, 2000); // 2-second delay before showing winner
+    }, 2000); // Delay before displaying the winner
 }
 
 function showWinnerModal(winner) {
@@ -85,19 +90,22 @@ function showWinnerModal(winner) {
     winnerText.textContent = `Winner: ${winner}`;
     modal.style.display = "block";
 
+    // Ensure modal disappears on mobile as well
     setTimeout(() => {
-        modal.style.display = "none"; // Hide modal after 2 seconds
+        modal.style.display = "none";
     }, 2000);
 }
 
 function eliminateUser(index) {
     userList.splice(index, 1); // Remove winner from list
-    updateUserDisplay(); // Refresh display
+    updateUserDisplay(); // Refresh user list UI
+
+    // Ensure re-rendering works on mobile
+    setTimeout(() => {
+        drawWheel();
+    }, 500); // Slight delay before updating UI
 }
 
-function closeModal() {
-document.getElementById("winnerModal").style.display = "none";
-}
 drawWheel();
 
 
