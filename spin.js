@@ -45,10 +45,23 @@ ctx.restore();
 
 startAngle += angle;
 }
+
+function spinWheel() {
+    if (options.length === 0 || spinning) return;
+    spinning = true;
+    let spinTime = 3000;
+    let finalAngle = Math.random() * 360 + 1440;
+    
+    canvas.style.transform = `rotate(${rotation + finalAngle}deg)`;
+    rotation += finalAngle;
+    
+    setTimeout(() => {
+        spinning = false;
+        determineWinner();
+    }, spinTime);
 }
 
-
-    function determineWinner() {
+function determineWinner() {
         let spinButton = document.getElementById("spinButton"); 
         
         let degrees = (rotation % 360 + 360) % 360;
@@ -73,7 +86,7 @@ startAngle += angle;
     }
 }
     
-    function closeModal() {
+function closeModal() {
         document.getElementById("winnerModal").style.display = "none";
     }
 
