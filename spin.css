@@ -61,6 +61,7 @@ h1 {
     border-radius: 50%;
     border: 5px solid #03fa6e;
     box-shadow: 0 0 20px #03fa6e;
+    aspect-ratio: 1 / 1;
 }
 
 /* Pointer triangle */
@@ -181,9 +182,12 @@ button:hover {
     }
 
     .pointer {
-        right: 50%;
-        transform: translateX(50%);
-        border-right: 20px solid #03fa6e;
+    right: -30px;
+    top: 50%;
+    transform: translateY(-50%);
+    border-right: 30px solid #03fa6e; /* Restore correct pointer size */
+}
+
     }
 
     .input-section {
