@@ -63,17 +63,36 @@ function spinWheel() {
     }, spinTime);
 }
 function determineWinner() {
-let degrees = (rotation % 360 + 360) % 360;
-let index = Math.floor((options.length - (degrees / 360) * options.length) % options.length);
+    setTimeout(() => {
+        const winningIndex = Math.floor(Math.random() * userList.length);
+        const winner = userList[winningIndex];
 
-if (options.length > 0) {
-document.getElementById("winnerText").innerText = options[index]; // Set winner name
-document.getElementById("winnerModal").style.display = "block"; // Show modal
+        // Show result in the modal after delay
+        showWinnerModal(winner);
 
-options.splice(index, 1); // Remove winner from list
-drawWheel();
-updateInputList();
+        // Delay elimination by 2 seconds
+        setTimeout(() => {
+            eliminateUser(winningIndex);
+        }, 2000);
+
+    }, 2000); // 2-second delay before showing winner
 }
+
+function showWinnerModal(winner) {
+    const modal = document.getElementById("winnerModal");
+    const winnerText = document.getElementById("winnerText");
+
+    winnerText.textContent = `Winner: ${winner}`;
+    modal.style.display = "block";
+
+    setTimeout(() => {
+        modal.style.display = "none"; // Hide modal after 2 seconds
+    }, 2000);
+}
+
+function eliminateUser(index) {
+    userList.splice(index, 1); // Remove winner from list
+    updateUserDisplay(); // Refresh display
 }
 
 function closeModal() {
