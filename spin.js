@@ -76,22 +76,9 @@ updateInputList();
 }
 }
 
-function adjustCanvasSize() {
-    if (window.innerWidth < 768) {
-        canvas.width = 250;
-        canvas.height = 250;
-    } else {
-        canvas.width = 300;
-        canvas.height = 300;
-    }
-
-    canvas.style.width = canvas.width + "px"; 
-    canvas.style.height = canvas.height + "px"; 
-
-    drawWheel(); // Redraw after resizing
+function closeModal() {
+document.getElementById("winnerModal").style.display = "none";
 }
+drawWheel();
 
-// Run on window resize
-window.addEventListener("resize", adjustCanvasSize);
-adjustCanvasSize(); // Run on load
 
