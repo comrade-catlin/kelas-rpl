@@ -48,43 +48,35 @@ startAngle += angle;
 }
 
 
-function spinWheel() {
-    if (options.length === 0 || spinning) return;
-    spinning = true;
-    let spinTime = 3000;
-    let finalAngle = Math.random() * 360 + 1440;
+    function determineWinner() {
+        let spinButton = document.getElementById("spinButton"); 
+        
+        let degrees = (rotation % 360 + 360) % 360;
+        let index = Math.floor((options.length - (degrees / 360) * options.length) % options.length);
     
-    canvas.style.transform = `rotate(${rotation + finalAngle}deg)`;
-    rotation += finalAngle;
-    
-    setTimeout(() => {
-        spinning = false;
-        determineWinner();
-    }, spinTime);
-}
-function determineWinner() {
-    let degrees = (rotation % 360 + 360) % 360;
-    let index = Math.floor((options.length - (degrees / 360) * options.length) % options.length);
-
-    if (options.length > 0) {
-        setTimeout(() => {
-            document.getElementById("winnerText").innerText = options[index]; // Set winner name
-            document.getElementById("winnerModal").style.display = "block"; // Show modal
-
+        if (options.length > 0) {
+           spinButton.disabled = true; // Disable spin button
             setTimeout(() => {
-                options.splice(index, 1); // Remove winner from list
-                document.getElementById("winnerModal").style.display = "none"; // Hide modal
-                
-                drawWheel();
-                updateInputList();
-            }, 2000); // 2-second delay before elimination
-        }, 2000); // 2-second delay before showing the winner
+                document.getElementById("winnerText").innerText = options[index]; // Set winner name
+                document.getElementById("winnerModal").style.display = "block"; // Show modal
+    
+                setTimeout(() => {
+                    options.splice(index, 1); // Remove winner from list
+                    document.getElementById("winnerModal").style.display = "none"; // Hide modal
+                    
+                    drawWheel();
+                    updateInputList();
+                }, 2000); // 2-second delay before elimination
+            }, 2000); // 2-second delay before showing the winner
+            setTimeout(() => {spinButton.disabled = false; // Enable if no options left
+        }, 2000); // 2-second delay before enabling spin button
     }
 }
+    
+    function closeModal() {
+        document.getElementById("winnerModal").style.display = "none";
+    }
 
-function closeModal() {
-    document.getElementById("winnerModal").style.display = "none";
-}
 
 drawWheel();
 
