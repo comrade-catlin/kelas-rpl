@@ -63,47 +63,27 @@ function spinWheel() {
     }, spinTime);
 }
 function determineWinner() {
-    setTimeout(() => {
-        if (userList.length === 0) {
-            alert("No more users left!");
-            return;
-        }
+    let degrees = (rotation % 360 + 360) % 360;
+    let index = Math.floor((options.length - (degrees / 360) * options.length) % options.length);
 
-        const winningIndex = Math.floor(Math.random() * userList.length);
-        const winner = userList[winningIndex];
-
-        // Show the winner in the modal with delay
-        showWinnerModal(winner);
-
-        // Delay the elimination after 2 seconds
+    if (options.length > 0) {
         setTimeout(() => {
-            eliminateUser(winningIndex);
-        }, 2000);
+            document.getElementById("winnerText").innerText = options[index]; // Set winner name
+            document.getElementById("winnerModal").style.display = "block"; // Show modal
 
-    }, 2000); // Delay before displaying the winner
+            setTimeout(() => {
+                options.splice(index, 1); // Remove winner from list
+                document.getElementById("winnerModal").style.display = "none"; // Hide modal
+                
+                drawWheel();
+                updateInputList();
+            }, 2000); // 2-second delay before elimination
+        }, 2000); // 2-second delay before showing the winner
+    }
 }
 
-function showWinnerModal(winner) {
-    const modal = document.getElementById("winnerModal");
-    const winnerText = document.getElementById("winnerText");
-
-    winnerText.textContent = `Winner: ${winner}`;
-    modal.style.display = "block";
-
-    // Ensure modal disappears on mobile as well
-    setTimeout(() => {
-        modal.style.display = "none";
-    }, 2000);
-}
-
-function eliminateUser(index) {
-    userList.splice(index, 1); // Remove winner from list
-    updateUserDisplay(); // Refresh user list UI
-
-    // Ensure re-rendering works on mobile
-    setTimeout(() => {
-        drawWheel();
-    }, 500); // Slight delay before updating UI
+function closeModal() {
+    document.getElementById("winnerModal").style.display = "none";
 }
 
 drawWheel();
