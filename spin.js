@@ -45,6 +45,8 @@ ctx.restore();
 
 startAngle += angle;
 }
+}
+
 
 function spinWheel() {
     if (options.length === 0 || spinning) return;
@@ -60,8 +62,7 @@ function spinWheel() {
         determineWinner();
     }, spinTime);
 }
-
-function determineWinner() {
+    function determineWinner() {
         let spinButton = document.getElementById("spinButton"); 
         
         let degrees = (rotation % 360 + 360) % 360;
@@ -86,11 +87,8 @@ function determineWinner() {
     }
 }
     
-function closeModal() {
+    function closeModal() {
         document.getElementById("winnerModal").style.display = "none";
     }
 
-
 drawWheel();
-
-
