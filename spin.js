@@ -76,9 +76,6 @@ updateInputList();
 }
 }
 
-function closeModal() {
-document.getElementById("winnerModal").style.display = "none";
-}
 function adjustCanvasSize() {
     if (window.innerWidth < 768) {
         canvas.width = 250;
@@ -87,8 +84,14 @@ function adjustCanvasSize() {
         canvas.width = 300;
         canvas.height = 300;
     }
-    drawWheel();
+
+    canvas.style.width = canvas.width + "px"; 
+    canvas.style.height = canvas.height + "px"; 
+
+    drawWheel(); // Redraw after resizing
 }
 
+// Run on window resize
 window.addEventListener("resize", adjustCanvasSize);
 adjustCanvasSize(); // Run on load
+
